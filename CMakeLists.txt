@@ -78,10 +78,7 @@ set(IMGUI_HEADERS
     3rdparty/imgui/imconfig.h
     3rdparty/imgui/imgui_internal.h
     3rdparty/imgui/imgui.h
-    3rdparty/imgui/imstb_rectpack.h
-    3rdparty/imgui/imstb_textedit.h
-    3rdparty/imgui/imstb_truetype.h    
-    3rdparty/imgui/imgui_stdlib.h
+    3rdparty/imgui/misc/cpp/imgui_stdlib.h
 )
 
 set(IMGUI_SRC
@@ -89,13 +86,13 @@ set(IMGUI_SRC
     3rdparty/imgui/imgui_draw.cpp
     3rdparty/imgui/imgui_widgets.cpp
     3rdparty/imgui/imgui.cpp
-    3rdparty/imgui/imgui_stdlib.cpp
+    3rdparty/imgui/misc/cpp/imgui_stdlib.cpp
     3rdparty/imgui/examples/imgui_impl_glfw.cpp
     3rdparty/imgui/examples/imgui_impl_glfw.h
     3rdparty/imgui/examples/imgui_impl_opengl3.cpp
     3rdparty/imgui/examples/imgui_impl_opengl3.h
 )
-set(IMGUI_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/imgui)
+set(IMGUI_INCLUDE_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/imgui)
 
 set(IMPLOT_HEADERS 3rdparty/implot/implot.h)
 set(IMPLOT_SRC     3rdparty/implot/implot.cpp 3rdparty/implot/implot_demo.cpp)
@@ -122,9 +119,11 @@ install(TARGETS clipper EXPORT mahi-gui-targets
 # MAHI UTIL
 #===============================================================================
 
-include(FetchContent) 
-FetchContent_Declare(mahi-util GIT_REPOSITORY https://github.com/mahilab/mahi-util.git) 
-FetchContent_MakeAvailable(mahi-util)
+add_subdirectory(3rdparty/mahi-util)
+install(TARGETS util EXPORT mahi-gui-targets 
+	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
 
 #===============================================================================
 # CREATE LIBRARY
@@ -158,6 +157,7 @@ target_include_directories(gui
 		$<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${IMGUI_INCLUDE_DIR}>
+        $<BUILD_INTERFACE:${IMGUI_INCLUDE_DIR}/misc/cpp>
         $<BUILD_INTERFACE:${IMPLOT_INCLUDE_DIR}>
         $<BUILD_INTERFACE:${NANOSVG_INCLUDE_DIR}>
 	PRIVATE

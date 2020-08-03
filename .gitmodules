@@ -1,0 +1,15 @@
+[submodule "3rdparty/glfw"]
+	path = 3rdparty/glfw
+	url = https://github.com/glfw/glfw
+[submodule "3rdparty/mahi-util"]
+	path = 3rdparty/mahi-util
+	url = https://github.com/mahilab/mahi-util.git
+[submodule "3rdparty/asio"]
+	path = 3rdparty/asio
+	url = https://github.com/chriskohlhoff/asio.git
+[submodule "3rdparty/imgui"]
+	path = 3rdparty/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "3rdparty/implot"]
+	path = 3rdparty/implot
+	url = https://github.com/epezent/implot.git
