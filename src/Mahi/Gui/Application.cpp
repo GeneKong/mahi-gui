@@ -501,8 +501,9 @@ static ImGuiContext* configureImGui(GLFWwindow *window) {
     font_cfg.OversampleH          = 1;
     font_cfg.OversampleV          = 1;
     font_cfg.FontDataOwnedByAtlas = false;
-    strcpy(font_cfg.Name, "Roboto Mono Bold");
-    io.Fonts->AddFontFromMemoryTTF(RobotoMono_Bold_ttf, RobotoMono_Bold_ttf_len, 15.0f, &font_cfg);
+    strcpy(font_cfg.Name, "Noto San SC Bold");
+    io.Fonts->AddFontFromMemoryTTF(NotoSansSC_Bold_otf, NotoSansSC_Bold_otf_len, 18.0f, &font_cfg,
+                                   io.Fonts->GetGlyphRangesChineseSimplifiedCommon());
 
     ImFontConfig icons_config;
     icons_config.MergeMode            = true;
