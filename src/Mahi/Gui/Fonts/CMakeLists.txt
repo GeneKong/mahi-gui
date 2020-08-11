@@ -8,4 +8,5 @@ target_sources(gui
         RobotoMonoRegular.cpp
         RobotoMonoBold.cpp
         RobotoMonoItalic.cpp
+        NotoSansSC-Bold.cpp
 )
